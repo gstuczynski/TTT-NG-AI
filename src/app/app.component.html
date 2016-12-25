@@ -1,0 +1,16 @@
+<table id="gboard">
+  <tr *ngFor="let x of board">
+    <td *ngFor="let field of x">
+      <game-field [field]="field" (click)="handleClick(field)" [class.cross]="field.player==1" [class.circle]="field.player==2" [class.win]="field.player==3">{{field.rate}}</game-field>
+    </td>
+  </tr>
+</table>
+<div id="controler">
+
+  <textarea #importbtn rows="15" cols="40" form="importBoard" [(ngModel)]="gState">{{gState}}</textarea>
+  <br />
+  <button (click)=handleImport(importbtn.value)>Importuj planszę</button>
+    <button (click)=handleExport()>Eksportuj planszę</button>
+  <input type="button" id="sym" value="Ruch AI" (click)="aiMove()">
+<!--  <input type="button" id="getWin" value="sprawdź zwycięzce" (click)="checkWin()">-->
+</div>
